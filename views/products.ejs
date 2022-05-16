@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= locals.title %></title>
+    <style>
+        .hide {
+            visibility: hidden;
+        }
+
+        #popUp {
+            background-color: darkgray;
+            position: absolute;
+            width: 90%;
+            min-height: 90%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #popUp small {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1><%= locals.title %></h1>
+    <% if(locals.popUp) { %>
+        <div id="popUp">
+            <small><%= locals.product.title %> tilføjet til kurven.</small>
+            <ul>
+                <% if(locals.neededProducts.length) { %>
+                    <h2>Har du husket følgende?</h2>
+                <% } else { %>
+                    <p>Du har alt nødvendigt til dette produkt.</p>
+                    <a href="/produkter">Tilbage</a>
+                <% } %>
+                <% locals.neededProducts.forEach(element => { %>
+                    <li>
+                        <form action="/kurv/<%= locals.product.id %>" method="post">
+                            <p><%= element.title %></p>
+                            <p><%= element.price %> <%= element.currency %> per <%= element.unittype %></p>
+                            <input name="id" type="text" value="<%= element.id %>" hidden>
+                            <input name="item_number" type="text" value="<%= element.item_number %>" hidden>
+                            <input name="title" type="text" value="<%= element.title %>" hidden>
+                            <input name="description" type="text" value="<%= element.description %>" hidden>
+                            <input name="price" type="text" value="<%= element.price %>" hidden>
+                            <input name="currency" type="text" value="<%= element.currency %>" hidden>
+                            <input name="unittype" type="text" value="<%= element.unittype %>" hidden>
+                            <input name="price_ex_vat" type="text" value="<%= element.price_ex_vat %>" hidden>
+                            <input name="discount" type="text" value="<%= element.discount %>" hidden>
+                            <input name="note" type="text" value="<%= element.note %>" hidden>
+                            <input name="available_status" type="text" value="<%= element.available_status %>" hidden>
+                            <input name="inventory_quantity" type="text" value="<%= element.inventory_quantity %>" hidden>
+                            <input name="amount_in_order" type="text" value="<%= element.amount_in_order %>" hidden>
+                            <input name="min_inventory" type="text" value="<%= element.min_inventory %>" hidden>
+                            <input name="supplier" type="text" value="<%= element.supplier %>" hidden>
+                            <input name="category" type="text" value="<%= element.category %>" hidden>
+                            <input name="local_location" type="text" value="<%= element.local_location  %>" hidden>
+                            <input name="sequence_number" type="text" value="<%= element.sequence_number %>" hidden>
+                            <input name="remote_location" type="text" value="<%= element.remote_location %>" hidden>                            
+                            <input type="submit" value="Læg I Kurv">
+                        </form>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+    <hr>
+    <ul>
+        <% if(locals.neededProducts) { %>
+            <% if(!locals.neededProducts.length) { %>
+                <p style="background-color: green;"><%= locals.product.title %> tilføjet til kurv</p>
+            <% } %>
+        <% } %>
+        <% locals.products.forEach(element => { %>
+            <li>
+                <p><%= element.title %></p>
+                <p><%= element.price %> <%= element.currency %> per <%= element.unittype %>.</p>
+                <% if (element.inventory_quantity >= 1) { %>
+                    <p>På lager: <%= element.inventory_quantity %></p>
+                <% } %>
+                <% if (element.inventory_quantity >= 1) { %>
+                <a href="/kurv/<%= element.id %>" class="<% if(locals.popUp) { %>hide<% } %>">Læg I Kurv</a>
+                <% } else { %>
+                    <p>Ikke på lager</p>
+                <% } %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
