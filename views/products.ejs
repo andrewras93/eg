@@ -29,7 +29,12 @@
     <h1><%= locals.title %></h1>
     <% if(locals.popUp) { %>
         <div id="popUp">
-            <small><%= locals.product.title %> tilføjet til kurven.</small>
+            <% if(locals.extraProduct) { %>
+                <p><%= locals.product.title %></p>
+                <small><%= locals.extraProduct %> tilføjet til kurven.</small>
+            <% } else { %>
+                <small><%= locals.product.title %> tilføjet til kurven.</small>
+            <% } %>
             <ul>
                 <% if(locals.neededProducts.length) { %>
                     <h2>Har du husket følgende?</h2>

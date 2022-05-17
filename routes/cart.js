@@ -43,7 +43,8 @@ router.post('/:id', async (req, res) => {
         products: products,
         product: product[0],
         popUp: true,
-        neededProducts: neededProducts
+        neededProducts: neededProducts,
+        extraProduct: req.body.title
     });
 });
 
