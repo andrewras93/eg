@@ -4,7 +4,7 @@ const queryController = require('../controllers/queryController');
 
 router.get('/', async (req, res) => {
     const users = await queryController.handleQuery("SELECT * FROM users");
-    
+
     res.json(users);
 });
 

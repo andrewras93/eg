@@ -7,7 +7,7 @@ let neededProducts;
 let temp;
 
 router.get('/', (req, res) => {
-    if(!req.session.cart) {
+    if (!req.session.cart) {
         req.session.cart = [];
     }
     cart = req.session.cart;
@@ -26,14 +26,14 @@ router.get('/', (req, res) => {
 router.post('/:id', async (req, res) => {
     temp.push(req.body);
 
-    if(!req.session.cart) {
+    if (!req.session.cart) {
         req.session.cart = [];
     }
     cart = req.session.cart;
 
     cart.push(req.body);
 
-    neededProducts = neededProducts.filter(({id}) => !temp.some((e) => e.id == id));
+    neededProducts = neededProducts.filter(({ id }) => !temp.some((e) => e.id == id));
 
     const product = await queryController.handleQuery(`SELECT * FROM products WHERE id=${req.params.id}`);
     const products = await queryController.handleQuery(`SELECT * FROM products`);
@@ -51,17 +51,17 @@ router.post('/:id', async (req, res) => {
 router.get('/:id', async (req, res) => {
     temp = [];
 
-    if(!req.session.cart) {
+    if (!req.session.cart) {
         req.session.cart = [];
     }
     cart = req.session.cart;
-    
+
     const product = await queryController.handleQuery(`SELECT * FROM products WHERE id=${req.params.id}`);
     const products = await queryController.handleQuery(`SELECT * FROM products`);
     neededProducts = await queryController.handleQuery(`SELECT * FROM products WHERE id!=${req.params.id} AND category = ${product[0].category}`);
     let hasProducts;
 
-    if(neededProducts.length) {
+    if (neededProducts.length) {
         hasProducts = true;
     } else {
         hasProducts = false;
@@ -71,7 +71,7 @@ router.get('/:id', async (req, res) => {
 
     //neededProducts = neededProducts.filter(({id}) => !cart.some((e) => e.id === id));
 
-    if(!neededProducts.length) {
+    if (!neededProducts.length) {
         hasProducts = false;
     }
 

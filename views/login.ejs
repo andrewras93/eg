@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
+<%- include('partials/head.ejs') %>
 <body>
+    <%- include('partials/header.ejs') %>
     <div style="max-width: 992px; margin: 64px auto">
         <p>
             <%= locals.errorMsg %>
@@ -23,6 +15,7 @@
             <button type="submit">Login</button>
         </form>
     </div>
+    <%- include('partials/scripts.ejs') %>
 </body>
 
 </html>

@@ -1,31 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= locals.title %></title>
-    <style>
-        .hide {
-            visibility: hidden;
-        }
+<%- include('partials/head.ejs') %>
+<style>
+    .hide {
+        visibility: hidden;
+    }
 
-        #popUp {
-            background-color: darkgray;
-            position: absolute;
-            width: 90%;
-            min-height: 90%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    #popUp {
+        background-color: darkgray;
+        position: absolute;
+        width: 90%;
+        min-height: 90%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
-        #popUp small {
-            background-color: green;
-        }
-    </style>
-</head>
+    #popUp small {
+        background-color: green;
+    }
+</style>
 <body>
+    <%- include('partials/header.ejs') %>
     <h1><%= locals.title %></h1>
     <% if(locals.popUp) { %>
         <div id="popUp">
@@ -95,5 +89,6 @@
             </li>
         <% }); %>
     </ul>
+    <%- include('partials/scripts.ejs') %>
 </body>
 </html>
