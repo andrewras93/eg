@@ -22,7 +22,6 @@ router.post("/signup", async function (req, res) {
     "a-zæøå"
   );
 
-<<<<<<< HEAD
     if (
         validator.isEmail(userEmail) &&
         password &&
@@ -43,27 +42,7 @@ router.post("/signup", async function (req, res) {
                 errorMsg: "Emailen er allerede registreret",
             });
         }
-=======
-  if (
-    validator.isEmail(userEmail) &&
-    password &&
-    userFirstname &&
-    userLastname
-  ) {
-    const user = await queryController.handleQuery(
-      `INSERT INTO users (email, password_hashed, firstname, lastname) VALUES ("${userEmail}","${password}","${userFirstname}","${userLastname}")`
-    );
-
-    if (user) {
-      res.redirect("/login");
-    } else {
-      res.render("signup", {
-        title: "Signup",
-        errorMsg: "Emailen er allerede registreret",
-      });
->>>>>>> ce8ae20c7745767f51a69642ea533466df9b8b90
     }
-  }
 });
 
 router.get("/", async function (req, res) {
