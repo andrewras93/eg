@@ -12,6 +12,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        z-index: 2;
     }
 
     #popUp small {
@@ -23,6 +24,7 @@
     <h1><%= locals.title %></h1>
     <% if(locals.popUp) { %>
         <div id="popUp">
+            <a href="/produkter">LUK</a>
             <% if(locals.extraProduct) { %>
                 <p><%= locals.product.title %></p>
                 <small><%= locals.extraProduct %> tilføjet til kurven.</small>
