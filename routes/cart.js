@@ -49,6 +49,8 @@ router.post('/:id', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
+    const cookies = req.cookies;
+    
     temp = [];
 
     if (!req.session.cart) {
@@ -72,6 +74,10 @@ router.get('/:id', async (req, res) => {
     //neededProducts = neededProducts.filter(({id}) => !cart.some((e) => e.id === id));
 
     if (!neededProducts.length) {
+        hasProducts = false;
+    }
+    
+    if (cookies.isPopUpDisabled == 'true') {
         hasProducts = false;
     }
 

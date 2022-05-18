@@ -11,4 +11,10 @@ router.get('/', async (req, res) => {
     });
 });
 
+router.get('/disable-popup', async (req, res) => {
+    
+    res.cookie('isPopUpDisabled', 'true');
+    res.redirect('/produkter');
+});
+
 module.exports = router;
