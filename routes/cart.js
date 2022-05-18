@@ -5,6 +5,7 @@ const queryController = require('../controllers/queryController');
 let cart;
 let neededProducts;
 let temp;
+let count = 0;
 
 router.get('/', (req, res) => {
     if (!req.session.cart) {
@@ -50,7 +51,15 @@ router.post('/:id', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const cookies = req.cookies;
-    
+
+    if (cookies.isPopUpDisabled) {
+        count++;
+        if (count > 5) {
+            res.clearCookie('isPopUpDisabled');
+            count = 0;
+        }
+    }
+
     temp = [];
 
     if (!req.session.cart) {
