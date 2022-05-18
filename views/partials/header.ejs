@@ -6,13 +6,45 @@
             </h1>
         </div>
         <ul>
-            <nav>
+            <nav id="headerNav">
                 <li><a href="/">Forside</a></li>
-                <li><a href="/produkter">Produkter</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/login/signup">Tilmeld</a></li>
+                <li><a href="/produkter">Produkter</a></li>                
                 <li><a href="/kurv">Kurv</a></li>
+                
+                <li><a href="/login/signup">Tilmeld</a></li>
+                <li><a href="/profil">Profil</a></li>
             </nav>
         </ul>
     </div>
 </header>
+<script>
+    const headerNav = document.getElementById('headerNav');
+
+    function printLoginOrLogout() {
+        let isIncluded;
+        let cookies = document.cookie;
+
+        if (cookies.includes('user')) {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+
+            a.setAttribute('href', '/logud');
+            a.innerHTML = 'Logud';
+
+            li.appendChild(a);
+            headerNav.appendChild(li);
+
+        } else {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+
+            a.setAttribute('href', '/login');
+            a.innerHTML = 'Login';
+
+            li.appendChild(a);
+            headerNav.appendChild(li);
+        }
+    }
+
+    printLoginOrLogout();
+</script>

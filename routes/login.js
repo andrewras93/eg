@@ -55,22 +55,26 @@ router.post("/", async function (req, res) {
   const userEmail = req.body.email;
   const password = req.body.password;
 
-  if (validator.isEmail(userEmail) && password) {
-    const hashedPass = await queryController.handleQuery(
-      `SELECT password_hashed FROM users WHERE email="${userEmail}"`
-    );
-    const pw = hashedPass[0]["password_hashed"];
-    const verified = bcrypt.compareSync(password, pw);
+  try {
+        if (validator.isEmail(userEmail) && password) {
+            const hashedPass = await queryController.handleQuery(
+            `SELECT firstname, password_hashed FROM users WHERE email="${userEmail}"`
+            );
+            console.log(hashedPass);
+            const pw = hashedPass[0]["password_hashed"];
+            const verified = bcrypt.compareSync(password, pw);
 
-    if (verified) {
-      res.redirect("/");
-    } else {
+            if (verified) {
+                res.cookie('user', hashedPass[0]["firstname"]);
+            res.redirect("/");
+            }
+        } 
+    } catch {
       res.render("login", {
         title: "Login",
         errorMsg: "Forkert email eller kode",
       });
     }
-  }
 });
 
 module.exports = router;

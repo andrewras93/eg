@@ -1,10 +1,28 @@
 const express = require('express');
+const { redirect } = require('express/lib/response');
 const router = express.Router();
 
 router.get('/', (req, res) => {
     res.render('index', {
         title: 'Forside'
     });
+});
+
+router.get('/profil', (req, res) => {
+    const cookies = req.cookies;
+    if(cookies.user) {
+        res.render('profile', {
+            title: 'Profil',
+            username: cookies.user
+        });
+    } else {
+        res.redirect('/login');
+    }
+});
+
+router.get('/logud', (req, res) => {
+    res.clearCookie("user");
+    res.redirect('/');
 });
 
 router.get('/produkter-api', async (req, res) => {
