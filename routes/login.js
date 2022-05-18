@@ -22,13 +22,15 @@ router.post("/signup", async function (req, res) {
         userFirstname &&
         userLastname
     ) {
-        const user = await queryController.handleQuery(
-            `INSERT INTO users (email, password_hashed, firstname, lastname) VALUES ("${userEmail}","${password}","${userFirstname}","${userLastname}")`
-        );
+        try {
+            const user = await queryController.handleQuery(
+                `INSERT INTO users (email, password_hashed, firstname, lastname) VALUES ("${userEmail}","${password}","${userFirstname}","${userLastname}")`
+            );
 
-        if (user) {
-            res.redirect("/login");
-        } else {
+            if (user) {
+                res.redirect("/login");
+            }
+        } catch(err) {
             res.render("signup", {
                 title: "Signup",
                 errorMsg: "Emailen er allerede registreret",
