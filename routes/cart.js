@@ -38,7 +38,7 @@ router.post('/:id', async (req, res) => {
 
     const product = await queryController.handleQuery(`SELECT * FROM products WHERE id=${req.params.id}`);
     const products = await queryController.handleQuery(`SELECT * FROM products`);
-    const othersBought = await queryController.handleQuery(`SELECT * FROM products WHERE id!=${req.params.id} AND category = ${product[0].category} ORDER BY amount_in_order DESC`);
+    const othersBought = await queryController.handleQuery(`SELECT * FROM products WHERE id!=${req.params.id} AND category = ${product[0].category} ORDER BY total_buys DESC`);
 
     res.render('products', {
         title: 'Alle Produkter',
@@ -72,7 +72,7 @@ router.get('/:id', async (req, res) => {
     const product = await queryController.handleQuery(`SELECT * FROM products WHERE id=${req.params.id}`);
     const products = await queryController.handleQuery(`SELECT * FROM products`);
     neededProducts = await queryController.handleQuery(`SELECT * FROM products WHERE id!=${req.params.id} AND category = ${product[0].category}`);
-    const othersBought = await queryController.handleQuery(`SELECT * FROM products WHERE id!=${req.params.id} AND category = ${product[0].category} ORDER BY amount_in_order DESC`); 
+    const othersBought = await queryController.handleQuery(`SELECT * FROM products WHERE id!=${req.params.id} AND category = ${product[0].category} ORDER BY total_buys DESC`); 
     let hasProducts;
 
     if (neededProducts.length) {

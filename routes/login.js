@@ -60,7 +60,6 @@ router.post("/", async function (req, res) {
             const hashedPass = await queryController.handleQuery(
             `SELECT firstname, password_hashed FROM users WHERE email="${userEmail}"`
             );
-            console.log(hashedPass);
             const pw = hashedPass[0]["password_hashed"];
             const verified = bcrypt.compareSync(password, pw);
 

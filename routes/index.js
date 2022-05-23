@@ -1,6 +1,6 @@
 const express = require('express');
-const { redirect } = require('express/lib/response');
 const router = express.Router();
+const queryController = require('../controllers/queryController');
 
 router.get('/', (req, res) => {
     res.render('index', {
