@@ -3,8 +3,10 @@ const router = express.Router();
 const queryController = require('../controllers/queryController');
 
 router.get('/', (req, res) => {
+    const cookies = req.cookies;
     res.render('index', {
-        title: 'Forside'
+        title: 'Forside',
+        username:cookies.user
     });
 });
 

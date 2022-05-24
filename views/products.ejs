@@ -3,43 +3,37 @@
     .hide {
         visibility: hidden;
     }
-
-    #popUp {
-        background-color: darkgray;
-        position: absolute;
-        width: 90%;
-        min-height: 90%;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-    }
-
-    #popUp small {
-        background-color: green;
-    }
 </style>
 <body>
-    <%- include('partials/header.ejs') %>
-    <h1 style="text-align:center;"><%= locals.title %></h1>
+    <!-- <%- include('partials/header.ejs') %> -->
+    <h1 style="text-align:center; margin-top: 5%;"><%= locals.title %></h1>
     <% if(locals.popUp) { %>
         <div id="popUp">
-            <a href="/produkter">LUK</a>
             <% if(locals.extraProduct) { %>
                 <p><%= locals.product.title %></p>
-                <small><%= locals.extraProduct %> tilføjet til kurven.</small>
+                <div class="popUp-youAdded"><p><%= locals.extraProduct %> tilføjet til kurven !</p></div>
             <% } else { %>
-                <small><%= locals.product.title %> tilføjet til kurven.</small>
+                <div class="popUp-youAdded"><p><%= locals.product.title %> tilføjet til kurven !</p></div>
             <% } %>
-            <ul>
+            <div class="close-popUp"><a href="/produkter"><img src="/icons/x.svg"></a></div>
+
+            <h2 class="popUp-title">Vi har nogle forslag til supplerende produkter.</h2>
+            <div class="popUp-product-suggestion">
+                <!-- <div class="popUp-div-container"><a href="">Se produkter</a></div> -->
+                <div class="popUp-div-container"><a href="/produkter">Ikke nu</a></div>
+            </div>
+            <div class="popUp-askmelater"><a href="/produkter/disable-popup">Spørg mig igen senere...</a></div>
+            
+            <!-- Genererer produkter vi skal bruge -->
+            <ul class="products-container">
                 <% if(locals.neededProducts.length) { %>
-                    <h2>Har du husket følgende?</h2>
+                    <h2 class="popUp-title-h2">Har du husket følgende?</h2>
                 <% } else { %>
                     <p>Du har alt nødvendigt til dette produkt.</p>
                     <a href="/produkter">Tilbage</a>
                 <% } %>
                 <% locals.neededProducts.forEach(element => { %>
-                    <li>
+                    <li class="products-item popUp-item">
                         <form action="/kurv/<%= locals.product.id %>" method="post">
                             <p><%= element.title %></p>
                             <p><%= element.price %> <%= element.currency %> per <%= element.unittype %></p>
@@ -66,9 +60,9 @@
                         </form>
                     </li>
                 <% }); %>
-                <h2>Andre købte også:</h2>
+                <h2 class="popUp-title-h2">Andre købte også:</h2>
                 <% locals.othersBought.forEach(element => { %>
-                    <li>
+                    <li class="products-item popUp-item">
                         <form action="/kurv/<%= locals.product.id %>" method="post">
                             <p><%= element.title %></p>
                             <p><%= element.price %> <%= element.currency %> per <%= element.unittype %></p>
@@ -96,14 +90,14 @@
                     </li>
                 <% }); %>
             </ul>
-            <a href="/produkter/disable-popup">Spørg mig ikke igen.</a>
+            <!-- Products-needed end -->
+
         </div>
     <% } %>
-<<<<<<< HEAD
     <div class="products-sort">
         <div class="products-sort-item">
             <p style="padding-right: 5%;">Sortér</p>
-            <img src="icons/chevron-down.svg" alt="Dropdown">
+            <img src="/icons/chevron-down.svg" alt="Dropdown">
         </div>
         <div class="products-sort-item">
             <p>Filter</p>
@@ -118,12 +112,6 @@
     <ul class="products-container">
         <% if(locals.neededProducts) { %>
             <% if(!locals.neededProducts.length) { %>
-=======
-    <hr>
-    <ul>
-        <% if(locals.neededProducts || locals.popUp === false) { %>
-            <% if(!locals.neededProducts.length || locals.popUp === false) { %>
->>>>>>> origin/main
                 <p style="background-color: green;"><%= locals.product.title %> tilføjet til kurv</p>
             <% } %>
         <% } %>

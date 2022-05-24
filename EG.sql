@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
-<<<<<<< HEAD
--- Generation Time: May 16, 2022 at 09:32 AM
-=======
 -- Generation Time: May 18, 2022 at 11:23 AM
->>>>>>> origin/main
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -43,13 +39,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `group_number`, `name`, `description`) VALUES
-<<<<<<< HEAD
-(1, 4740, 'Supplerende produkter', NULL);
-=======
 (1, 4740, 'Supplerende produkter', NULL),
 (2, 3230, 'Trælast', NULL),
 (3, 1660, 'VVS', NULL);
->>>>>>> origin/main
 
 -- --------------------------------------------------------
 
@@ -79,17 +71,10 @@ INSERT INTO `local_location` (`id`, `location_value`, `zipcode`, `city`, `addres
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
--- Table structure for table `product`
---
-
-CREATE TABLE `product` (
-=======
 -- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
->>>>>>> origin/main
   `id` int(8) NOT NULL,
   `item_number` int(10) NOT NULL,
   `title` varchar(50) NOT NULL,
@@ -104,10 +89,7 @@ CREATE TABLE `products` (
   `inventory_quantity` int(6) DEFAULT NULL,
   `amount_in_order` int(10) DEFAULT NULL,
   `min_inventory` int(5) DEFAULT NULL,
-<<<<<<< HEAD
-=======
   `total_buys` int(7) DEFAULT NULL,
->>>>>>> origin/main
   `supplier` varchar(25) NOT NULL,
   `category` int(6) NOT NULL,
   `local_location` int(6) DEFAULT NULL,
@@ -116,17 +98,6 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
-<<<<<<< HEAD
--- Dumping data for table `product`
---
-
-INSERT INTO `product` (`id`, `item_number`, `title`, `description`, `price`, `currency`, `unittype`, `price_ex_vat`, `discount`, `note`, `available_status`, `inventory_quantity`, `amount_in_order`, `min_inventory`, `supplier`, `category`, `local_location`, `sequence_number`, `remote_location`) VALUES
-(1, 2017043, 'CARAMBA RENSESPRAY', '-', 12.99, 'DKK', 'stk', 0, 0, NULL, 0, 0, 20, 25, 'DIYsupply', 4740, 110, 114, NULL),
-(2, 1521026, 'MILLARCO SEKUNDLIM 30ML', '-', 23.99, 'DKK', 'fl', 0, 0, NULL, 1, 2, 31, 25, 'DIYsupply', 4740, 200, 123, 193),
-(3, 5063215, 'PLASTI KOTE FUGEPEN GRÅ 5ML', '-', 31.99, 'DKK', 'stk', 0, 0, NULL, 1, 26, 31, 100, 'DIYsupply', 4740, 131, 36, NULL),
-(4, 3701612, 'PLASTIC PADDING 100 0,56LT', '-', 36.99, 'DKK', 'dås', 0, 0, NULL, 1, 2, 20, 15, 'DIYsupply', 4740, 135, 11, NULL),
-(9, 8527673, 'DANA GLASBÅND KISO 141 SORT', '-', 89.99, 'DKK', 'rl', 0, 0, NULL, 1, 37, 40, 50, 'DIYsupply', 4740, NULL, 3, 4123);
-=======
 -- Dumping data for table `products`
 --
 
@@ -140,7 +111,6 @@ INSERT INTO `products` (`id`, `item_number`, `title`, `description`, `price`, `c
 (7, 1992022, 'Terrasseskruer H.1212 8x160 400stk', '-', 166.99, 'DKK', 'pk', 0, 0, NULL, 1, 80, 20, 100, 77, 'Din træmand', 3230, 200, 64, 4123),
 (8, 2030054, 'vandrør k54 Ø36x16x6000', '-', 73.99, 'DKK', 'm', 0, 0, NULL, 1, 56, 24, 80, 33, 'VVSXperten', 1660, 131, 775, NULL),
 (10, 2030075, 'vandrørs fitting k54 han-hun 2\" rørgevind Ø35', '-', 35.99, 'DKK', 'stk', 0, 0, NULL, 1, 96, 4, 100, 23, 'VVSXperten', 1660, 131, 779, 256);
->>>>>>> origin/main
 
 -- --------------------------------------------------------
 
@@ -178,27 +148,17 @@ CREATE TABLE `supplier` (
   `address` varchar(100) NOT NULL,
   `city` varchar(75) NOT NULL,
   `zipcode` int(5) NOT NULL,
-<<<<<<< HEAD
-  `country` varchar(75) NOT NULL,
-  `contact` int(11) NOT NULL
-=======
   `country` varchar(75) NOT NULL
->>>>>>> origin/main
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `supplier`
 --
 
-<<<<<<< HEAD
-INSERT INTO `supplier` (`id`, `name`, `address`, `city`, `zipcode`, `country`, `contact`) VALUES
-(1, 'DIYsupply', 'suppliervejen 1', 'aalborg', 9000, 'danmark', 0);
-=======
 INSERT INTO `supplier` (`id`, `name`, `address`, `city`, `zipcode`, `country`) VALUES
 (1, 'DIYsupply', 'suppliervejen 1', 'aalborg', 9000, 'danmark'),
 (2, 'Din træmand', 'landevejen 18', 'silkeborg', 8800, 'danmark'),
 (3, 'VVSXperten', 'havregade 18C', 'aarhus', 8600, 'danmark');
->>>>>>> origin/main
 
 -- --------------------------------------------------------
 
@@ -221,13 +181,9 @@ CREATE TABLE `supplier_contact` (
 --
 
 INSERT INTO `supplier_contact` (`id`, `firstname`, `lastname`, `email`, `phone`, `position`, `supplier_id`) VALUES
-<<<<<<< HEAD
-(1, 'Jens', 'Jensen', 'jensjensen@diysupply.dk', 12345678, 'keyaccount manager', 1);
-=======
 (1, 'Jens', 'Jensen', 'jensjensen@diysupply.dk', 12345678, 'keyaccount manager', 1),
 (2, 'bent', 'hansen', 'benth@dintraemand.dk', 88123456, 'saelger', 2),
 (3, 'kris', 'kristensen', 'kk@vvsxperten.dk', 19233212, 'salesman', 3);
->>>>>>> origin/main
 
 -- --------------------------------------------------------
 
@@ -262,15 +218,9 @@ ALTER TABLE `local_location`
   ADD KEY `location_value` (`location_value`);
 
 --
-<<<<<<< HEAD
--- Indexes for table `product`
---
-ALTER TABLE `product`
-=======
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
->>>>>>> origin/main
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `item_number` (`item_number`),
   ADD KEY `belongs_to` (`category`),
@@ -323,17 +273,10 @@ ALTER TABLE `local_location`
   MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
-<<<<<<< HEAD
--- AUTO_INCREMENT for table `product`
---
-ALTER TABLE `product`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-=======
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
->>>>>>> origin/main
 
 --
 -- AUTO_INCREMENT for table `remote_location`
@@ -345,21 +288,13 @@ ALTER TABLE `remote_location`
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-<<<<<<< HEAD
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-=======
   MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
->>>>>>> origin/main
 
 --
 -- AUTO_INCREMENT for table `supplier_contact`
 --
 ALTER TABLE `supplier_contact`
-<<<<<<< HEAD
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-=======
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
->>>>>>> origin/main
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -372,15 +307,9 @@ ALTER TABLE `users`
 --
 
 --
-<<<<<<< HEAD
--- Constraints for table `product`
---
-ALTER TABLE `product`
-=======
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
->>>>>>> origin/main
   ADD CONSTRAINT `belongs_to` FOREIGN KEY (`category`) REFERENCES `category` (`group_number`),
   ADD CONSTRAINT `located_locally_at` FOREIGN KEY (`local_location`) REFERENCES `local_location` (`location_value`),
   ADD CONSTRAINT `located_remotely_at` FOREIGN KEY (`remote_location`) REFERENCES `remote_location` (`remote_location`),

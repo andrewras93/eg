@@ -1,11 +1,12 @@
 <%- include('partials/head.ejs') %>
 <body>
-    <%- include('partials/header.ejs') %>
-    <div style="max-width: 992px; margin: 64px auto">
+    <!-- <%- include('partials/header.ejs') %> -->
+    <h1 class="signup-title">Login</h1>
+    <div class="signup">
         <p>
             <%= locals.errorMsg %>
         </p>
-        <form action="" method="POST" style="display: flex; flex-direction: column; max-width: 300px">
+        <form action="" method="POST" class="signup-form">
             <label for="email">Email</label>
             <input type="email" placeholder="Email" name="email" required />
 
@@ -15,6 +16,7 @@
             <button type="submit">Login</button>
         </form>
     </div>
+    <%- include('partials/footer.ejs') %>
     <%- include('partials/scripts.ejs') %>
 </body>
 

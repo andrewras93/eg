@@ -1,24 +1,30 @@
 <%- include('partials/head.ejs') %>
+
 <body>
-    <%- include('partials/header.ejs') %>
-    <h1>
+    <!-- <%- include('partials/header.ejs') %> -->
+    <h1 style="text-align:center; margin: 5%;">
         <%= locals.title %>
     </h1>
-    <ul>
-        <% locals.cart.forEach(element=> { %>
-            <li>
+    <div style="height: 65vh;">
+        <ul class="products-container">
+            <% locals.cart.forEach(element=> { %>
+            <li class="cart-item">
                 <p>
                     <%= element.title %>
                 </p>
                 <p>
                     <%= element.price %>
-                        <%= element.currency %> per <%= element.unittype %>.
+                    <%= element.currency %> per <%= element.unittype %>.
                 </p>
             </li>
             <% }); %>
-    </ul>
-    <p>Total: <%= locals.cartTotal.toFixed(2) %> kr.</p>
-    <button>Betal</button>
+        </ul>
+    </div>
+    <div class="cart-pay">
+        <p>Total: <%= locals.cartTotal.toFixed(2) %> kr.</p>
+        <button class="cart-pay-button">Betal</button>
+    </div>
+    <%- include('partials/footer.ejs') %>
     <%- include('partials/scripts.ejs') %>
 </body>
 

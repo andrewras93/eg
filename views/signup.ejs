@@ -1,11 +1,12 @@
 <%- include('partials/head.ejs') %>
 <body>
-    <%- include('partials/header.ejs') %>
-    <div style="max-width: 992px; margin: 64px auto">
+    <!-- <%- include('partials/header.ejs') %> -->
+    <h1 class="signup-title">Registrer bruger</h1>
+    <div class="signup">
         <p>
             <%= locals.errorMsg %>
         </p>
-        <form action="/login/signup" method="POST" style="display: flex; flex-direction: column; max-width: 300px">
+        <form action="/login/signup" method="POST" class="signup-form">
             <label for="firstname">Fornavn</label>
             <input type="text" placeholder="Fornavn" name="firstname" required />
 
@@ -21,6 +22,7 @@
             <button type="submit">Registrer</button>
         </form>
     </div>
+    <%- include('partials/footer.ejs') %>
     <%- include('partials/scripts.ejs') %>
 </body>
 
