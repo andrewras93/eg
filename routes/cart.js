@@ -5,6 +5,7 @@ const queryController = require('../controllers/queryController');
 let cart;
 let neededProducts;
 let temp;
+let count = 0;
 
 router.get('/', (req, res) => {
     if (!req.session.cart) {
@@ -37,6 +38,7 @@ router.post('/:id', async (req, res) => {
 
     const product = await queryController.handleQuery(`SELECT * FROM products WHERE id=${req.params.id}`);
     const products = await queryController.handleQuery(`SELECT * FROM products`);
+    const othersBought = await queryController.handleQuery(`SELECT * FROM products WHERE id!=${req.params.id} AND category = ${product[0].category} ORDER BY total_buys DESC`);
 
     res.render('products', {
         title: 'Alle Produkter',
@@ -44,11 +46,22 @@ router.post('/:id', async (req, res) => {
         product: product[0],
         popUp: true,
         neededProducts: neededProducts,
-        extraProduct: req.body.title
+        extraProduct: req.body.title,
+        othersBought: othersBought
     });
 });
 
 router.get('/:id', async (req, res) => {
+    const cookies = req.cookies;
+
+    if (cookies.isPopUpDisabled) {
+        count++;
+        if (count > 5) {
+            res.clearCookie('isPopUpDisabled');
+            count = 0;
+        }
+    }
+
     temp = [];
 
     if (!req.session.cart) {
@@ -59,6 +72,7 @@ router.get('/:id', async (req, res) => {
     const product = await queryController.handleQuery(`SELECT * FROM products WHERE id=${req.params.id}`);
     const products = await queryController.handleQuery(`SELECT * FROM products`);
     neededProducts = await queryController.handleQuery(`SELECT * FROM products WHERE id!=${req.params.id} AND category = ${product[0].category}`);
+    const othersBought = await queryController.handleQuery(`SELECT * FROM products WHERE id!=${req.params.id} AND category = ${product[0].category} ORDER BY total_buys DESC`); 
     let hasProducts;
 
     if (neededProducts.length) {
@@ -74,13 +88,18 @@ router.get('/:id', async (req, res) => {
     if (!neededProducts.length) {
         hasProducts = false;
     }
+    
+    if (cookies.isPopUpDisabled == 'true') {
+        hasProducts = false;
+    }
 
     res.render('products', {
         title: 'Alle Produkter',
         products: products,
         product: product[0],
         popUp: hasProducts,
-        neededProducts: neededProducts
+        neededProducts: neededProducts,
+        othersBought: othersBought
     });
 });
 

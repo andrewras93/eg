@@ -66,9 +66,40 @@
                         </form>
                     </li>
                 <% }); %>
+                <h2>Andre købte også:</h2>
+                <% locals.othersBought.forEach(element => { %>
+                    <li>
+                        <form action="/kurv/<%= locals.product.id %>" method="post">
+                            <p><%= element.title %></p>
+                            <p><%= element.price %> <%= element.currency %> per <%= element.unittype %></p>
+                            <input name="id" type="text" value="<%= element.id %>" hidden>
+                            <input name="item_number" type="text" value="<%= element.item_number %>" hidden>
+                            <input name="title" type="text" value="<%= element.title %>" hidden>
+                            <input name="description" type="text" value="<%= element.description %>" hidden>
+                            <input name="price" type="text" value="<%= element.price %>" hidden>
+                            <input name="currency" type="text" value="<%= element.currency %>" hidden>
+                            <input name="unittype" type="text" value="<%= element.unittype %>" hidden>
+                            <input name="price_ex_vat" type="text" value="<%= element.price_ex_vat %>" hidden>
+                            <input name="discount" type="text" value="<%= element.discount %>" hidden>
+                            <input name="note" type="text" value="<%= element.note %>" hidden>
+                            <input name="available_status" type="text" value="<%= element.available_status %>" hidden>
+                            <input name="inventory_quantity" type="text" value="<%= element.inventory_quantity %>" hidden>
+                            <input name="amount_in_order" type="text" value="<%= element.amount_in_order %>" hidden>
+                            <input name="min_inventory" type="text" value="<%= element.min_inventory %>" hidden>
+                            <input name="supplier" type="text" value="<%= element.supplier %>" hidden>
+                            <input name="category" type="text" value="<%= element.category %>" hidden>
+                            <input name="local_location" type="text" value="<%= element.local_location  %>" hidden>
+                            <input name="sequence_number" type="text" value="<%= element.sequence_number %>" hidden>
+                            <input name="remote_location" type="text" value="<%= element.remote_location %>" hidden>                            
+                            <input type="submit" value="Læg I Kurv">
+                        </form>
+                    </li>
+                <% }); %>
             </ul>
+            <a href="/produkter/disable-popup">Spørg mig ikke igen.</a>
         </div>
     <% } %>
+<<<<<<< HEAD
     <div class="products-sort">
         <div class="products-sort-item">
             <p style="padding-right: 5%;">Sortér</p>
@@ -87,6 +118,12 @@
     <ul class="products-container">
         <% if(locals.neededProducts) { %>
             <% if(!locals.neededProducts.length) { %>
+=======
+    <hr>
+    <ul>
+        <% if(locals.neededProducts || locals.popUp === false) { %>
+            <% if(!locals.neededProducts.length || locals.popUp === false) { %>
+>>>>>>> origin/main
                 <p style="background-color: green;"><%= locals.product.title %> tilføjet til kurv</p>
             <% } %>
         <% } %>

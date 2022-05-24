@@ -9,3 +9,34 @@
         </ul>
     </div>
 </header>
+<script>
+    const headerNav = document.getElementById('headerNav');
+
+    function printLoginOrLogout() {
+        let isIncluded;
+        let cookies = document.cookie;
+
+        if (cookies.includes('user')) {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+
+            a.setAttribute('href', '/logud');
+            a.innerHTML = 'Logud';
+
+            li.appendChild(a);
+            headerNav.appendChild(li);
+
+        } else {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+
+            a.setAttribute('href', '/login');
+            a.innerHTML = 'Login';
+
+            li.appendChild(a);
+            headerNav.appendChild(li);
+        }
+    }
+
+    printLoginOrLogout();
+</script>
