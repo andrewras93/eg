@@ -21,7 +21,7 @@
 </style>
 <body>
     <%- include('partials/header.ejs') %>
-    <h1><%= locals.title %></h1>
+    <h1 style="text-align:center;"><%= locals.title %></h1>
     <% if(locals.popUp) { %>
         <div id="popUp">
             <a href="/produkter">LUK</a>
@@ -69,28 +69,43 @@
             </ul>
         </div>
     <% } %>
-    <hr>
-    <ul>
+    <div class="products-sort">
+        <div class="products-sort-item">
+            <p style="padding-right: 5%;">Sortér</p>
+            <img src="icons/chevron-down.svg" alt="Dropdown">
+        </div>
+        <div class="products-sort-item">
+            <p>Filter</p>
+        </div>
+    </div>
+
+    <% let count = 0; locals.products.forEach(element=> {%>
+    <% count ++;%>
+    <% });%>
+    <p class="products-count"><%= count; %> varer fundet</p>
+        
+    <ul class="products-container">
         <% if(locals.neededProducts) { %>
             <% if(!locals.neededProducts.length) { %>
                 <p style="background-color: green;"><%= locals.product.title %> tilføjet til kurv</p>
             <% } %>
         <% } %>
         <% locals.products.forEach(element => { %>
-            <li>
+            <li class="products-item">
                 <p><%= element.title %></p>
                 <p><%= element.price %> <%= element.currency %> per <%= element.unittype %>.</p>
                 <% if (element.inventory_quantity >= 1) { %>
                     <p>På lager: <%= element.inventory_quantity %></p>
                 <% } %>
                 <% if (element.inventory_quantity >= 1) { %>
-                <a href="/kurv/<%= element.id %>" class="<% if(locals.popUp) { %>hide<% } %>">Læg I Kurv</a>
+                <div class="item-button"><a href="/kurv/<%= element.id %>" class="<% if(locals.popUp) { %>hide<% } %>">Læg I Kurv</a></div>
                 <% } else { %>
                     <p>Ikke på lager</p>
                 <% } %>
             </li>
         <% }); %>
     </ul>
+    <%- include('partials/footer.ejs') %>
     <%- include('partials/scripts.ejs') %>
 </body>
 </html>

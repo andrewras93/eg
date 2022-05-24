@@ -1,6 +1,46 @@
 <%- include('partials/head.ejs') %>
+
 <body>
-    <%- include('partials/header.ejs') %>
-    <h1>Velkommen</h1>
+    <!-- <%- include('partials/header.ejs') %> -->
+    <!-- User/location containers -->
+    <div class="container-containers">
+        <div class="container-r">
+            <div class="container-r-icon">
+                <img src="icons/user.svg" alt="Lokation">
+            </div>
+            <div class="container-r-inner">
+                <p style="margin:0">Jacob Hildebrandt Sørensen</p>
+                <img src="icons/chevron-down.svg" alt="Dropdown">
+            </div>
+        </div>
+
+        <div class="container-r">
+            <div class="container-r-icon">
+                <img src="icons/map-pin.svg" alt="Lokation">
+            </div>
+            <div class="container-r-inner">
+                <p style="margin:0">Vejle</p>
+                <img src="icons/chevron-down.svg" alt="Dropdown">
+            </div>
+        </div>
+    </div>
+    <!-- QR scanner -->
+    <main>
+        <div class="qr-container">
+            <p style="border-bottom: 2px solid var(--pink-red);">Køb</p>
+            <div class="qr-scanner">
+                <img src="icons/codesandbox.svg">
+                <p>Scan vare</p>
+            </div>
+            <p>Retur</p>
+        </div>
+        <a href="/produkter" class="seProdukter">
+            Se alle produkter
+        </a>
+    </main>
+
+
+
+    <%- include('partials/footer.ejs') %>
     <%- include('partials/scripts.ejs') %>
 </body>
