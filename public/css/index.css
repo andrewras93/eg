@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  --pink-red: #FF7988;
-  --dark-red: #A05C62;
-  --light-red: #FFE4E6;
-  --dark-blue: #005B5D;
-  --grey: #9D9D9D;
+  --pink-red: #ff7988;
+  --dark-red: #a05c62;
+  --light-red: #ffe4e6;
+  --dark-blue: #005b5d;
+  --grey: #9d9d9d;
 }
 
 html,
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background: rgba(196, 196, 196, 0.1);
   min-height: 100vh;
 }
@@ -31,10 +31,9 @@ ul {
   margin: 0;
 }
 
-
 /* Assets */
 .container-r {
-  border: 1px solid #9D9D9D;
+  border: 1px solid #9d9d9d;
   border-radius: 100px;
   display: flex;
   align-items: center;
@@ -75,7 +74,8 @@ main {
 }
 
 .container-r-icon img {
-  filter: invert(54%) sepia(56%) saturate(621%) hue-rotate(306deg) brightness(106%) contrast(100%);
+  filter: invert(54%) sepia(56%) saturate(621%) hue-rotate(306deg)
+    brightness(106%) contrast(100%);
 }
 
 .container-containers {
@@ -114,7 +114,7 @@ main {
   width: 168px;
   height: 168px;
   margin: 0 5%;
-  border: 1px solid #9D9D9D;
+  border: 1px solid #9d9d9d;
   border-radius: 50%;
 }
 
@@ -136,7 +136,7 @@ main {
 }
 
 .index-name {
-  margin:0;
+  margin: 0;
   text-transform: capitalize;
 }
 
@@ -175,6 +175,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding-bottom: 20%;
 }
 
 .products-item {
@@ -251,7 +252,6 @@ main {
   width: 70%;
   display: flex;
   justify-content: center;
-
 }
 
 .popUp-div-container {
@@ -282,7 +282,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 3% auto
+  margin: 3% auto;
 }
 
 .popUp-askmelater a {
@@ -303,7 +303,6 @@ main {
   border: none;
   padding: 5px;
 }
-
 
 /* Signup.ejs styling */
 .signup {
@@ -343,15 +342,15 @@ main {
   width: 50%;
   margin: 10% auto;
   text-align: center;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
 .cart-pay-button {
   background: var(--pink-red);
-  border:none;
+  border: none;
   color: white;
-  padding:10px 40px
+  padding: 10px 40px;
 }
 
 /* Header partial styling // header.ejs */
@@ -359,9 +358,9 @@ header {
   height: 5vh;
 }
 
-
 /* Footer partial styling // footer.ejs */
 footer {
+  position: fixed;
   width: 100%;
   display: flex;
   align-items: center;
@@ -369,6 +368,7 @@ footer {
   height: 8vh;
   border-top: 1px solid rgba(157, 157, 157, 0.75);
   background-color: white;
+  bottom: 0;
 }
 
 footer ul {
@@ -377,7 +377,6 @@ footer ul {
   display: flex;
   width: 100%;
   height: auto;
-
 }
 
 footer ul li {
